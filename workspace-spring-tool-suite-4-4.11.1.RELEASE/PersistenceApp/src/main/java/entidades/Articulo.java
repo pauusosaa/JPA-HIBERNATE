@@ -15,8 +15,11 @@ import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 
+import org.hibernate.envers.Audited;
+
 @Entity
 @Table (name ="articulo")
+@Audited
 public class Articulo implements Serializable{
 	
 	/*================= atributos =================*/

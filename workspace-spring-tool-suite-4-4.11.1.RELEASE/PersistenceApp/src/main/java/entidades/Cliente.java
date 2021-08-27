@@ -12,9 +12,12 @@ import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
+import org.hibernate.envers.Audited;
+
 
 @Entity
 @Table (name = "cliente")
+@Audited
 public class Cliente implements Serializable {
 	
 	/*================= atributos =================*/

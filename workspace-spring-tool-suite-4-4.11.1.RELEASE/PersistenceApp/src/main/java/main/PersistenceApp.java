@@ -20,7 +20,7 @@ public class PersistenceApp {
 		try {
 			em.getTransaction().begin();
 			
-			Factura factura1 = new Factura();
+			/*Factura factura1 = new Factura();
 			factura1.setNumero(12);
 			factura1.setFecha("10/08/2020");
 			
@@ -59,9 +59,12 @@ public class PersistenceApp {
 			
 			factura1.getDetalles().add(detalle2);
 			
-			factura1.setTotal(120);
+			factura1.setTotal(120);*/
 			
-			em.persist(factura1);
+			Factura factura1 = em.find(Factura.class, 1L);
+			//factura1.setNumero(85);
+			
+			em.remove(factura1);
 			
 			em.flush();
 			em.getTransaction().commit();
