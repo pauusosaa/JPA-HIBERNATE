@@ -14,11 +14,21 @@ import javax.persistence.Table;
 
 import org.hibernate.envers.Audited;
 
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
+
 
 
 @Entity
 @Table(name ="detalle_factura")
 @Audited
+@NoArgsConstructor
+@AllArgsConstructor
+@Data
+@Builder
 public class DetalleFactura implements Serializable{
 	
 	/*================= atributos =================*/
@@ -41,67 +51,5 @@ public class DetalleFactura implements Serializable{
 	@JoinColumn(name="fk_articulo")
 	private Articulo articulo;
 	
-	/*================= constructores =================*/
-	
-	public DetalleFactura() {
-		
-	}
 
-	public DetalleFactura(int cantidad, int subtotal) {
-	
-		this.cantidad = cantidad;
-		this.subtotal = subtotal;
-	}
-
-	public DetalleFactura(Long id, int cantidad, int subtotal) {
-		
-		this.id = id;
-		this.cantidad = cantidad;
-		this.subtotal = subtotal;
-	}
-	
-	public DetalleFactura(int cantidad, int subtotal, Articulo articulo) {
-		
-		this.cantidad = cantidad;
-		this.subtotal = subtotal;
-		this.articulo = articulo;
-	}
-
-	/*================= getters y setters =================*/
-
-	public Long getId() {
-		return id;
-	}
-
-	public void setId(Long id) {
-		this.id = id;
-	}
-
-	public int getCantidad() {
-		return cantidad;
-	}
-
-	public void setCantidad(int cantidad) {
-		this.cantidad = cantidad;
-	}
-
-	public int getSubtotal() {
-		return subtotal;
-	}
-
-	public void setSubtotal(int subtotal) {
-		this.subtotal = subtotal;
-	}
-
-	public Articulo getArticulo() {
-		return articulo;
-	}
-
-	public void setArticulo(Articulo articulo) {
-		this.articulo = articulo;
-	}
-	
-	
-
-	
 }

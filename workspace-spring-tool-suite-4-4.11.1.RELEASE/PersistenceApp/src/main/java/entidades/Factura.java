@@ -17,11 +17,21 @@ import javax.persistence.Table;
 
 import org.hibernate.envers.Audited;
 
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
+
 
 
 @Entity
 @Table (name="factura")
 @Audited
+@NoArgsConstructor
+@AllArgsConstructor
+@Data
+@Builder
 public class Factura implements Serializable {
 	
 	/*================= atributos =================*/
@@ -50,78 +60,5 @@ public class Factura implements Serializable {
 	@OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
 	private List<DetalleFactura> detalles = new ArrayList<DetalleFactura>();
 
-	/*================= constructores =================*/
-	
-	public Factura() {
-		
-	}
-
-	public Factura(String fecha, int numero) {
-		
-		this.fecha = fecha;
-		this.numero = numero;
-	}
-	
-	public Factura(String fecha, int numero, Cliente cliente) {
-		super();
-		this.fecha = fecha;
-		this.numero = numero;
-		this.cliente = cliente;
-	}
-
-	/*================= getters y setters =================*/
-
-	public Long getId() {
-		return id;
-	}
-
-	public void setId(Long id) {
-		this.id = id;
-	}
-
-	public String getFecha() {
-		return fecha;
-	}
-
-	public void setFecha(String fecha) {
-		this.fecha = fecha;
-	}
-
-	public int getNumero() {
-		return numero;
-	}
-
-	public void setNumero(int numero) {
-		this.numero = numero;
-	}
-
-	public Cliente getCliente() {
-		return cliente;
-	}
-
-	public void setCliente(Cliente cliente) {
-		this.cliente = cliente;
-	}
-
-	public List<DetalleFactura> getDetalles() {
-		return detalles;
-	}
-
-	public void setDetalles(List<DetalleFactura> detalles) {
-		this.detalles = detalles;
-	}
-
-	public int getTotal() {
-		return total;
-	}
-
-	public void setTotal(int total) {
-		this.total = total;
-	}
-	
-	
-	
-	
-	
 	
 }

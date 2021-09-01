@@ -11,10 +11,22 @@ import javax.persistence.Table;
 
 import org.hibernate.envers.Audited;
 
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+import lombok.NonNull;
+import lombok.RequiredArgsConstructor;
+
 
 @Entity
 @Table (name ="domicilio")
 @Audited
+@NoArgsConstructor
+@RequiredArgsConstructor
+@AllArgsConstructor
+@Data
+@Builder
 public class Domicilio implements Serializable {
 	
 	/*================= atributos =================*/
@@ -26,53 +38,10 @@ public class Domicilio implements Serializable {
 	private Long id;
 	
 	@Column (name = "nombre_calle")
-	private String nombreCalle;
+	@NonNull private String nombreCalle;
 	
 	@Column(name ="numero")
-	private int numero;
-	
-	/*================= constructores =================*/
-	
-	public Domicilio() {
-		
-	}
-
-	public Domicilio(String nombreCalle, int numero) {
-		
-		this.nombreCalle = nombreCalle;
-		this.numero = numero;
-	}
-	
-	/*================= getters y setters =================*/
-
-	public Long getId() {
-		return id;
-	}
-
-	public void setId(Long id) {
-		this.id = id;
-	}
-
-	public String getNombreCalle() {
-		return nombreCalle;
-	}
-
-	public void setNombreCalle(String nombreCalle) {
-		this.nombreCalle = nombreCalle;
-	}
-
-	public int getNumero() {
-		return numero;
-	}
-
-	public void setNumero(int numero) {
-		this.numero = numero;
-	}
-	
-	
-
-	
-
+	@NonNull private int numero;
 	
 	
 }

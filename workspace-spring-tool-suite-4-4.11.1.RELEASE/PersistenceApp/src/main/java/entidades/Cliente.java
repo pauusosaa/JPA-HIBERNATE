@@ -14,10 +14,22 @@ import javax.persistence.Table;
 
 import org.hibernate.envers.Audited;
 
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+import lombok.NonNull;
+import lombok.RequiredArgsConstructor;
+
 
 @Entity
 @Table (name = "cliente")
 @Audited
+@NoArgsConstructor
+@AllArgsConstructor
+@RequiredArgsConstructor
+@Data
+@Builder
 public class Cliente implements Serializable {
 	
 	/*================= atributos =================*/
@@ -29,98 +41,19 @@ public class Cliente implements Serializable {
 	private Long id;
 	
 	@Column(name="nombre")
-	private String nombre;
+	@NonNull private String nombre;
 	
 	@Column(name= "apellido")
-	private String apellido;
+	@NonNull private String apellido;
 	
 	@Column (name = "dni", unique = true)
-	private int dni;
+	@NonNull private int dni;
 	
 	/*================= relaciones =================*/
 	
 	@OneToOne(cascade = CascadeType.ALL)
 	@JoinColumn (name = "fk_domicilio")
 	private Domicilio domicilio;
-	
-	
-	/*================= constructores =================*/
-	
-	public Cliente() {
-		
-	}
-	
-	public Cliente(String nombre, String apellido, int dni) {
-		
-		this.nombre = nombre;
-		this.apellido = apellido;
-		this.dni = dni;
-	}
-	
-	
-
-	public Cliente(Long id, String nombre, String apellido, int dni) {
-	
-		this.id = id;
-		this.nombre = nombre;
-		this.apellido = apellido;
-		this.dni = dni;
-	}
-
-	public Cliente(String nombre, String apellido, int dni, Domicilio domicilio) {
-		super();
-		this.nombre = nombre;
-		this.apellido = apellido;
-		this.dni = dni;
-		this.domicilio = domicilio;
-	}
-
-	/*================= getters y setters =================*/
-
-	public Long getId() {
-		return id;
-	}
-
-	public void setId(Long id) {
-		this.id = id;
-	}
-
-	public String getNombre() {
-		return nombre;
-	}
-
-	public void setNombre(String nombre) {
-		this.nombre = nombre;
-	}
-
-	public String getApellido() {
-		return apellido;
-	}
-
-	public void setApellido(String apellido) {
-		this.apellido = apellido;
-	}
-
-	public int getDni() {
-		return dni;
-	}
-
-	public void setDni(int dni) {
-		this.dni = dni;
-	}
-
-	public Domicilio getDomicilio() {
-		return domicilio;
-	}
-
-	public void setDomicilio(Domicilio domicilio) {
-		this.domicilio = domicilio;
-	}
-	
-	
-	
-	
-	
 	
 	
 
